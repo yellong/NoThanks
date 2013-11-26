@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="stylesheets/screen.css"/>
+</head>
+<body>
+
+<div id="p1">
+    <ul class="player_list"></ul>
+    <input type="text" class="player_name"/>
+    <a class="add_player" href="##">添加玩家</a>
+    <button class="start_game" style="display: none">开始游戏</button>
+</div>
+
+<div class="players">
+
+</div>
+
+<script type="text/javascript" src="javascripts/libs/jquery/jquery.js"></script>
+<script type="text/javascript" src="javascripts/libs/underscore/underscore.js"></script>
+<script type="text/javascript" src="javascripts/libs/backbone/backbone.js"></script>
+<script type="text/tpl" id='player-tpl'>
+        <h4><%= name %></h4>
+        <img src="<%= pic %>" alt="face"/>
+        <div class="bet"><%= bet %></div>
+        <div class="score"><%= score %></div>
+        <div class="cards">
+            <% _.each(groups,function(group){ %>
+            <ul class="group">
+                <%  _.each(group,function(card){ %>
+                <li class="card"><%= card %></li>
+                <% }) %>
+            </ul>
+            <% }) %>
+        </div>
+        <div class="tip">
+            收到了张 <span class='receive'>12</span> 的牌，
+            牌上面压着 <span class='betInCard'>0</span> 个筹码，
+            要不要呢？？
+            <button class="accept">收下</button>
+            <button class="pass">跳过</button>
+        </div>
+</script>
+<script type="text/javascript" src="javascripts/models.js"></script>
+<script type="text/javascript" src="javascripts/event.js"></script>
+<script type="text/javascript" src="javascripts/view.js"></script>
+</body>
+</html>

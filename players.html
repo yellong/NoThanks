@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="stylesheets/screen.css"/>
+</head>
+<body>
+
+<div class="players">
+
+
+</div>
+
+<script type="text/javascript" src="javascripts/libs/jquery/jquery.js"></script>
+<script type="text/javascript" src="javascripts/libs/underscore/underscore.js"></script>
+<script type="text/javascript" src="javascripts/libs/backbone/backbone.js"></script>
+<script type="text/tpl" id='player-tpl'>
+    <div class="player">
+        <h4><%= name %></h4>
+        <img src="<%= pic %>" alt="face"/>
+        <div class="bet"><%= bet %></div>
+        <div class="score"><%= score %></div>
+        <div class="cards">
+            <% _.each(cards,function(group){ %>
+            <ul class="group">
+                <%  _.each(group,function(card){ %>
+                <li class="card"><%= card %></li>
+                <% }) %>
+            </ul>
+            <% }) %>
+        </div>
+    <div class="tip">
+        收到了张 “<span class='receive'>12</span>” 的牌，要不要呢？？
+        <button class="accept">收下</button>
+        <button class="pass">跳过</button>
+    </div>
+    </div>
+</script>
+<script type="text/javascript">
+
+    var createPlayers = function(num){
+        var ret = [];
+        _.times(num,function(i){
+            ret[i] = {
+                name:'player'+i,
+                score:Math.ceil(Math.random()*100),
+                cards:(function(){
+                   var ranges = _.range(3,35),
+                       cards=[],
+                       groups = [];
+                    _.times(_.random(3,15),function(i){
+                        cards[i] = ranges[_.random(1,31)];
+                    });
+                    cards = _.sortBy(cards,function(a){return a});
+                    for(var i = 0;i<cards.length;i++){
+                        var group = [ cards[i] ];
+                        while(cards[i+1]-cards[i]===1 || cards[i+1]-cards[i]===0){
+                            group.push(cards[i++]);
+                        }
+                        groups.push(group);
+                    }
+                    return groups;
+                })(),
+                bet: Math.ceil(Math.random()*40),
+                pic:'images/'+ _.random(1,17)+'.png'
+            }
+        });
+        return ret;
+    };
+
+    var players = createPlayers(9);
+
+    _.each(players,function(player){
+        var tpl = _.template($('#player-tpl').html());
+        var $player = $(tpl(player));
+        $player.appendTo($('.players')).hover(function(){
+           $(this).find('.tip').css('opacity','100');
+        },function(){
+            $(this).find('.tip').css('opacity','0');
+        });
+        $('.group').each(function(i,group){
+            var h = 0;
+            $(group).find('.card').each(function(i,card){
+                var z_index = 100-i;
+               $(card).css({
+                   top: i*18+"px",
+                   left: i*6+"px",
+                   '-webkit-transform':'rotate('+15/i+'deg)',
+                   'z-index':z_index
+               }).hover(function(){
+                           $(this).css('z-index',999);
+                       },function(){
+                           $(this).css('z-index',z_index);
+                       });
+
+                h+=$(card).height();
+            });
+            $(group).height(h);
+        });
+    });
+
+
+
+
+
+
+</script>
+</body>
+</html>

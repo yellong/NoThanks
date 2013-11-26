@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>soulteary's jquery</title>
+    <style type="text/css">
+        #warp {
+            width: auto;
+            height: 400px;
+            background-color: #FCF;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            width: 300px;
+            left: 50%;
+            margin-left: -150px;
+            height: 200px;
+            top: 50%;
+            margin-top: -100px;
+            overflow: hidden;
+            line-height: 200px;
+            background-color: lightyellow;
+            float: left;
+        }
+
+        #left {
+            z-index: 50;
+            border: solid 5px red;
+            height: 240px;
+        }
+
+        #right {
+            z-index: 40;
+            border: solid 5px green;
+            height: 180px;
+        }
+
+        .slide .inner {
+            height: 100%;
+            width: 100%
+        }
+
+        .slide #leftinner {
+            line-height: normal;
+            position: relative;
+            text-align: center;
+            top: 10%;
+        }
+    </style>
+</head>
+<body>
+<button> play</button>
+<br/>
+
+<div id="warp">
+    <div id="left" class="slide">
+        <div class="inner" id="leftinner">Left</div>
+    </div>
+    <div id="right" class="slide">
+        <div class="inner" id="rightinner">Right</div>
+    </div>
+</div>
+<script type="text/javascript" src="javascripts/libs/jquery/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        function boxset($a, $b, $act) {
+            if ($act == 1) {
+                $b.animate({width: "300px"}, 400);
+                with ($a) {
+                    animate({height: "180px"}, 200);
+                    fadeTo(100, 0.4);
+                    animate({width: "250px"}, 100);
+                    css('z-index', 30);
+                    animate({marginLeft: "2500px"});
+                    animate({marginLeft: "-240px"});
+                }
+                with ($b) {
+                    animate({marginLeft: "-2500px"});
+                    animate({height: "240px"}, 50);
+                    fadeTo(100, 1);
+                    css('z-index', 60);
+                }
+                return -155;
+            } else {
+                $a.animate({width: "300px"}, 400);
+                with ($b) {
+                    animate({height: "180px"}, 200);
+                    fadeTo(100, 0.4);
+                    animate({width: "250px"}, 100);
+                    css('z-index', 40);
+                    animate({marginLeft: "-2500px"});
+                }
+                with ($a) {
+                    animate({marginLeft: "2500px"});
+                    animate({marginLeft: "-150px"});
+                    animate({height: "240px"}, 50);
+                    fadeTo(100, 1);
+                    css('z-index', 50);
+                }
+                return 0;
+            }
+        }
+
+        $("button,#left,#right").click(function () {
+            var $divL = $("#left");
+            var $divR = $("#right");
+            $divR.animate({
+                marginLeft: parseInt($divR.css('marginLeft'), 0) >= -150 ? boxset($divL, $divR, 1) : boxset($divL, $divR, 2)
+            });
+        });
+
+
+    });
+</script>
+</body>
+</html>

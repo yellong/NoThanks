@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="stylesheets/screen.css"/>
+</head>
+<body>
+
+
+<div id="impress">
+    <div class="step">
+    </div>
+</div>
+
+<script type="text/javascript" src="javascripts/libs/jquery/jquery.js"></script>
+<script type="text/javascript" src="javascripts/libs/impress/impress.js"></script>
+<script type="text/tpl" id="step-tpl">
+
+
+</script>
+<script type="text/javascript">
+   var arr = ['playA','playB','playC','playD','playE','ffff'];
+   var r = 900;
+   var angle_pre = 2*Math.PI/arr.length;
+
+  $("#impress").html("");
+
+   for(var i =0;i<arr.length;i++){
+       var angle = angle_pre * i,
+               x = Math.round(r * Math.sin(angle)),
+               y = - Math.round(r * Math.cos(angle));
+
+       var rotate = angle*180/Math.PI;
+
+       $("<div class=step></div>").html(arr[i])
+               .attr('data-x',x).attr('data-y',y)
+               .attr('data-rotate',rotate)
+               .appendTo($("#impress"));
+   }
+
+   $("#impress").append("<div class='step overview' data-scale='1.5'></div>");
+
+
+    var api = impress();
+        api.init();
+
+
+</script>
+</body>
+</html>

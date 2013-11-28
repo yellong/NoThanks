@@ -31,7 +31,7 @@
         var player_name = name || $('input.player_name').val().replace(/^[\s]*|[\s]*$/g, '');
         if (player_name && !players.findWhere({name:player_name})) {
             players.add(new Player({ name:player_name }));
-            $('.player_list').append('<li>' + player_name + '<button style="display: none" class=del_btn>删除</button></li>');
+            $('.player_list').append('<li>' + player_name + '<a href="##" style="display: none" class=del_btn>删除</a></li>');
         }
         $('input.player_name').val('');
         checkPlayer();

@@ -67,17 +67,84 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 11, ../sass/screen.scss */
+/* line 16, ../sass/screen.scss */
+#p1 {
+  width: 300px;
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -190px;
+  margin-top: -240px;
+  border: 1px solid #cccccc;
+  padding: 20px;
+  padding-top: 40px;
+  border-radius: 4px;
+}
+/* line 30, ../sass/screen.scss */
+#p1 h2 {
+  position: absolute;
+  width: 300px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 24px;
+  font-family: '';
+  top: -20px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f1f1f1), color-stop(45%, #ffffff), color-stop(80%, #f1f1f1), color-stop(100%, #eeeeee));
+  background-image: -webkit-linear-gradient(#f1f1f1, #ffffff 45%, #f1f1f1 80%, #eeeeee);
+  background-image: -moz-linear-gradient(#f1f1f1, #ffffff 45%, #f1f1f1 80%, #eeeeee);
+  background-image: -o-linear-gradient(#f1f1f1, #ffffff 45%, #f1f1f1 80%, #eeeeee);
+  background-image: linear-gradient(#f1f1f1, #ffffff 45%, #f1f1f1 80%, #eeeeee);
+}
+/* line 47, ../sass/screen.scss */
+#p1 .add_wrap {
+  position: absolute;
+  height: 40px;
+  line-height: 40px;
+  bottom: 0;
+  width: 100%;
+  vertical-align: middle;
+}
+
+/* line 57, ../sass/screen.scss */
 .player_list li {
   line-height: 40px;
 }
 
-/* line 15, ../sass/screen.scss */
+/* line 61, ../sass/screen.scss */
 .del_btn {
   margin-left: 10px;
 }
 
-/* line 19, ../sass/screen.scss */
+/* line 66, ../sass/screen.scss */
+.add_player, .del_btn, .start_game {
+  width: 75px;
+  text-decoration: none;
+  border: 1px solid #c91237;
+  background: crimson;
+  border-radius: 4px;
+  padding: 4px;
+  color: #ffffff;
+}
+
+/* line 76, ../sass/screen.scss */
+.start_game {
+  background: forestgreen;
+  border-color: #1e7b1e;
+}
+
+/* line 81, ../sass/screen.scss */
+.player_name {
+  width: 150px;
+  position: relative;
+  top: -2px;
+}
+
+/* line 87, ../sass/screen.scss */
 .step {
   border-radius: 200px;
   width: 400px;
@@ -89,17 +156,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   vertical-align: middle;
 }
 
-/* line 30, ../sass/screen.scss */
+/* line 98, ../sass/screen.scss */
 .pop {
   opacity: 0;
 }
 
-/* line 35, ../sass/screen.scss */
+/* line 103, ../sass/screen.scss */
 .step.present .pop {
   opacity: 1;
 }
 
-/* line 40, ../sass/screen.scss */
+/* line 108, ../sass/screen.scss */
 .players .player {
   position: relative;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f1f1f1), color-stop(45%, #ffffff), color-stop(80%, #f1f1f1), color-stop(100%, #eeeeee));
@@ -124,11 +191,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin: 10px;
   padding: 10px;
 }
-/* line 77, ../sass/screen.scss */
+/* line 145, ../sass/screen.scss */
 .players .player.curr {
   opacity: .9;
 }
-/* line 81, ../sass/screen.scss */
+/* line 149, ../sass/screen.scss */
 .players .player h4 {
   font-size: 20px;
   position: absolute;
@@ -136,12 +203,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 20px;
   line-height: 20px;
 }
-/* line 89, ../sass/screen.scss */
+/* line 157, ../sass/screen.scss */
 .players .player img {
   width: 96px;
   height: 96px;
 }
-/* line 94, ../sass/screen.scss */
+/* line 162, ../sass/screen.scss */
 .players .player .bet {
   position: absolute;
   top: 10px;
@@ -154,7 +221,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   line-height: 24px;
   text-align: center;
 }
-/* line 105, ../sass/screen.scss */
+/* line 173, ../sass/screen.scss */
 .players .player .bet:after {
   content: "";
   display: block;
@@ -164,7 +231,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background: url("../images/bet.png") no-repeat;
   background-size: 48px;
 }
-/* line 115, ../sass/screen.scss */
+/* line 183, ../sass/screen.scss */
 .players .player .score {
   display: inline-block;
   position: absolute;
@@ -178,7 +245,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-align: center;
   color: #cd0a0a;
 }
-/* line 127, ../sass/screen.scss */
+/* line 195, ../sass/screen.scss */
 .players .player .score:after {
   content: "";
   display: block;
@@ -188,14 +255,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background: url("../images/score.png") no-repeat;
   background-size: 48px;
 }
-/* line 139, ../sass/screen.scss */
+/* line 207, ../sass/screen.scss */
 .players .player .cards .group {
   position: relative;
   float: left;
   width: 55px;
   height: 60px;
 }
-/* line 150, ../sass/screen.scss */
+/* line 218, ../sass/screen.scss */
 .players .player .tip {
   opacity: 0;
   position: absolute;
@@ -214,7 +281,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -moz-box-shadow: 0 1px 10px black;
   box-shadow: 0 1px 10px black;
 }
-/* line 171, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 .players .player .tip:before {
   content: "";
   display: block;
@@ -234,29 +301,29 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   z-index: -1;
   left: -6.07107px;
 }
-/* line 188, ../sass/screen.scss */
+/* line 256, ../sass/screen.scss */
 .players .player .tip .receive {
   position: relative !important;
   top: -10px !important;
 }
-/* line 194, ../sass/screen.scss */
+/* line 262, ../sass/screen.scss */
 .players .player .tip button {
   position: absolute;
   width: 60px;
   height: 28px;
 }
-/* line 199, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 .players .player .tip button.accept {
   bottom: 10px;
   right: 80px;
 }
-/* line 203, ../sass/screen.scss */
+/* line 271, ../sass/screen.scss */
 .players .player .tip button.pass {
   bottom: 10px;
   right: 10px;
 }
 
-/* line 214, ../sass/screen.scss */
+/* line 282, ../sass/screen.scss */
 .card, .players .player .cards .group .card, .players .player .tip .receive {
   position: absolute;
   top: 0;

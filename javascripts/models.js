@@ -99,6 +99,8 @@
             this.set('bet',playerBet-additionalBet);
             card.bet = card.bet+additionalBet;
 
+            this.reScore();
+
             console.log("%s pass card[%d,%d] with added %d bets.",
                 this.get('name'),card.value,card.bet,additionalBet);
 

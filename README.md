@@ -1,4 +1,4 @@
 NoThanks
 ========
 
-boardgame 'NO THANKS'  without cards
+boardgame 'NO THANKS'
